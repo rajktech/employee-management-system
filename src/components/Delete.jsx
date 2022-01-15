@@ -13,33 +13,37 @@ const DeleteComp = () => {
   const [norecord, setNoRecord] = useState(false);
 
   const readHandler = () => {
-    setLoading(true);
-    fetch("https://609a5ad40f5a13001721aac8.mockapi.io/employee_db/" + empId)
-      .then((res) => res.json())
-      .then((res) => {
-        if (res !== "Not found") {
-          const { fname, lname, email, dob, gender } = res;
-          setFname(fname);
-          setLname(lname);
-          setEmail(email);
-          setDob(dob);
-          setGender(gender);
-          setNoRecord(false);
-        } else {
-          setFname("");
-          setLname("");
-          setEmail("");
-          setDob("");
-          setGender("");
-          setNoRecord(true);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    if (empId) {
+      setLoading(true);
+      fetch("https://609a5ad40f5a13001721aac8.mockapi.io/employee_db/" + empId)
+        .then((res) => res.json())
+        .then((res) => {
+          if (res !== "Not found") {
+            const { fname, lname, email, dob, gender } = res;
+            setFname(fname);
+            setLname(lname);
+            setEmail(email);
+            setDob(dob);
+            setGender(gender);
+            setNoRecord(false);
+          } else {
+            setFname("");
+            setLname("");
+            setEmail("");
+            setDob("");
+            setGender("");
+            setNoRecord(true);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
+      alert("Please enter employee id");
+    }
   };
 
   const deleteHandler = () => {
@@ -51,7 +55,7 @@ const DeleteComp = () => {
       })
       .then((json) => {
         if (json) {
-          alert("deleted successfully" + json.id);
+          alert("User deleted successfully");
         }
       });
   };

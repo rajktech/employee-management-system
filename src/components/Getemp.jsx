@@ -5,14 +5,14 @@ const Getemp = (props) => {
       <hr />
       {props.setEmpId && (
         <>
-          <div class="form-group row">
-            <label for="staticEmail" class="col-sm-3 col-form-label">
+          <div className="form-group row">
+            <label className="col-sm-3 col-form-label">
               Employee ID
             </label>
-            <div class="col-sm-9">
+            <div className="col-sm-9">
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 onChange={(e) => props.setEmpId(e.target.value)}
               />
             </div>
@@ -20,7 +20,7 @@ const Getemp = (props) => {
           <div className="text-right">
             <button
               type="button"
-              class="btn btn-primary"
+              className="btn btn-primary"
               onClick={props.readHandler}
             >
               Read

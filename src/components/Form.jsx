@@ -25,72 +25,72 @@ const FormComp = (props) => {
       ) : (
         <>
           {norecord && (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
               No Record Found
             </div>
           )}
           <>
-            <div class="form-group row">
-              <label for="staticEmail" class="col-sm-3 col-form-label">
+            <div className="form-group row">
+              <label className="col-sm-3 col-form-label">
                 First Name
               </label>
-              <div class="col-sm-9">
+              <div className="col-sm-9">
                 <input
                   type="text"
-                  class="form-control"
-                  defaultValue={fname}
+                  className="form-control"
+                  value={fname}
                   onChange={(e) => setFname(e.target.value)}
                 />
               </div>
             </div>
 
-            <div class="form-group row">
-              <label for="staticEmail" class="col-sm-3 col-form-label">
+            <div className="form-group row">
+              <label className="col-sm-3 col-form-label">
                 Last Name
               </label>
-              <div class="col-sm-9">
+              <div className="col-sm-9">
                 <input
                   type="text"
-                  class="form-control"
-                  defaultValue={lname}
+                  className="form-control"
+                  value={lname}
                   onChange={(e) => setLname(e.target.value)}
                 />
               </div>
             </div>
 
-            <div class="form-group row">
-              <label for="staticEmail" class="col-sm-3 col-form-label">
+            <div className="form-group row">
+              <label className="col-sm-3 col-form-label">
                 Email
               </label>
-              <div class="col-sm-9">
+              <div className="col-sm-9">
                 <input
                   type="text"
-                  class="form-control"
-                  defaultValue={email}
+                  className="form-control"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
             </div>
 
-            <div class="form-group row">
-              <label for="staticEmail" class="col-sm-3 col-form-label">
+            <div className="form-group row">
+              <label className="col-sm-3 col-form-label">
                 Date of Birth
               </label>
-              <div class="col-sm-9">
+              <div className="col-sm-9">
                 <input
                   type="date"
-                  class="form-control"
-                  defaultValue={dob}
+                  className="form-control"
+                  value={dob}
                   onChange={(e) => setDob(e.target.value)}
                 />
               </div>
             </div>
 
-            <div class="form-group row">
-              <label for="staticEmail" class="col-sm-3 col-form-label">
+            <div className="form-group row">
+              <label className="col-sm-3 col-form-label">
                 Gender
               </label>
-              <div class="col-sm-9">
+              <div className="col-sm-9">
                 Male
                 <input
                   type="radio"
@@ -116,7 +116,7 @@ const FormComp = (props) => {
               <div className="text-right">
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   onClick={clickHandler}
                 >
                   {clicktitle}
