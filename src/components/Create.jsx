@@ -1,4 +1,6 @@
 import {useState} from 'react';
+import Getemp from './Getemp';
+import FormComp from "./Form";
 
 const CreateComp = () => {
     const [fname, setFname] = useState('');
@@ -31,10 +33,22 @@ const CreateComp = () => {
 
     return(
         <div>
-            {gender}
-            <h1>Create New Employee</h1>
-            <hr />
-            <div>
+            <Getemp title="Create New Employee" />
+            <FormComp
+                fname={fname}
+                lname={lname}
+                email={email}
+                dob={dob}
+                gender={gender}
+                setFname={setFname}
+                setLname={setLname}
+                setEmail={setEmail}
+                setDob={setDob}
+                setGender={setGender}
+                clicktitle="Create"
+                clickHandler={clickHandler}
+            />
+            {/* <div>
                 <label>
                     First Name
                 </label>
@@ -66,10 +80,10 @@ const CreateComp = () => {
                 <input type="radio" name="gender" value="male" onChange={(e) => setGender(e.target.value)} />
                 Female
                 <input type="radio" name="gender" value="female" onChange={(e) => setGender(e.target.value)} />
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
                 <input type="button" value="Create" onClick={clickHandler} />
-            </div>
+            </div> */}
         </div>
     );
 }
