@@ -7,9 +7,11 @@ const ReadComp = () => {
     const [email, setEmail] = useState('');
     const [dob, setDob] = useState('');
     const [gender, setGender] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    const clickHandler = () => {
-        fetch('https://609a5ad40f5a13001721aac8.mockapi.io/employee_db/')
+    const clickHandler = async () => {
+        setLoading(true);
+        await fetch('https://609a5ad40f5a13001721aac8.mockapi.io/employee_db/')
         .then((res) => res.json())
         .then((res) => {
             let filteredArray = res.filter((item) => item.id == empId);
@@ -27,6 +29,7 @@ const ReadComp = () => {
                 setDob('');
                 setGender('');
             }
+            //setLoading(false);
         })
         .catch((err) => {
             console.log(err);
@@ -35,53 +38,60 @@ const ReadComp = () => {
 
     return(
         <div>
-            {gender}
-            <h1>Read Existing Employee</h1>
+            <h5>Read Existing Employee</h5>
             <hr />
-            <div>
-                <label>
-                    Employee ID
-                </label>
-                <input type="text" onChange={(e) => setEmpId(e.target.value)} />
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-3 col-form-label">Employee ID</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" onChange={(e) => setEmpId(e.target.value)}  />
+                </div>
             </div>
-            <div>
-                <input type="button" value="Read" onClick={clickHandler} />
+            <div className="text-right">
+                <button type="button" class="btn btn-primary" onClick={clickHandler}>Read</button>
             </div>
-            <hr />
-            <div>
-                <label>
-                    First Name
-                </label>
-                <input type="text" defaultValue={fname} />
-            </div>
-            <div>
-                <label>
-                    Last Name
-                </label>
-                <input type="text" defaultValue={lname} />
-            </div>
-            <div>
-                <label>
-                    Email
-                </label>
-                <input type="text" defaultValue={email} />
-            </div>
-            <div>
-                <label>
-                    Date of Birth
-                </label>
-                <input type="date" defaultValue={dob} />
-            </div>
-            <div>
-                <label>
-                    Gender
-                </label>
-                Male
-                <input type="radio" name="gender" value="male" checked={gender === 'male' && 'true'} />
-                Female
-                <input type="radio" name="gender" value="female" checked={gender === 'female' && 'true'} />
-            </div>
-            
+
+            <hr style={{border: '#000 solid 1px'}} />
+            {loading ? <img src="../assets/Iphone-spinner-2.gif" /> : (
+            <>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">First Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" defaultValue={fname}  />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" defaultValue={lname}  />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" defaultValue={email}  />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Date of Birth</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" defaultValue={dob}  />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Gender</label>
+                    <div class="col-sm-9">
+                        Male
+                        <input type="radio" name="gender" value="male" checked={gender === 'male' && true} className=" ml-1 mr-4" />
+                        Female
+                        <input type="radio" name="gender" value="female" checked={gender === 'female' && true} className=" ml-1" />
+                    </div>
+                </div>
+            </>
+            )}
         </div>
     );
 }

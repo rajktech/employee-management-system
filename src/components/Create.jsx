@@ -8,14 +8,25 @@ const CreateComp = () => {
     const [gender, setGender] = useState('');
 
     const clickHandler = () => {
-        // fetch('https://609a5ad40f5a13001721aac8.mockapi.io/employee_db/')
-        // .then((res) => res.json())
-        // .then((res) => {
-        //     console.log(res);
-        // })
-        // .catch((err) => {
-        //     console.log(err);
-        // })
+        fetch('https://609a5ad40f5a13001721aac8.mockapi.io/employee_db/', {
+			method: 'POST',
+			body: JSON.stringify({
+				fname,
+                lname,
+                email,
+                dob,
+                gender
+			}),
+			headers: {
+				"Content-type": "application/json; charset=UTF-8"
+			}
+		}).then(response => {
+				return response.json()
+			}).then(json => {
+				if (json) {
+                    alert("added successfully" + json.id);
+                }
+			});
     };
 
     return(
