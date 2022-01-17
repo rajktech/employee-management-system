@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, NavLink, Switch, Route, useParams } from "react-router-dom";
+import { NavLink, Switch, Route, HashRouter } from "react-router-dom";
 import CreateComp from "./components/Create";
 import ReadComp from "./components/Read";
 import UpdateComp from "./components/Update";
@@ -12,7 +12,7 @@ const App = () => {
       <h2>Employee Management</h2>
       <div>Open Book Assignment Submitted By Raj Keshwani </div>
       <div className="mt-4">
-        <BrowserRouter>
+        <HashRouter>
           <NavLink to="create" activeClassName="active-tab"><button type="button" className="btn btn-primary mr-3">Create</button></NavLink>
           <NavLink to="read" activeClassName="active-tab"><button type="button" className="btn btn-primary mr-3">Read</button></NavLink>
           <NavLink to="update" activeClassName="active-tab"><button type="button" className="btn btn-primary mr-3">Update</button></NavLink>
@@ -26,7 +26,7 @@ const App = () => {
             <Route path="/update" exact component={UpdateComp} />
             <Route path="/delete" exact component={DeleteComp} />
           </Switch>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     </div>
   );
