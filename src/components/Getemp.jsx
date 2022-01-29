@@ -1,3 +1,5 @@
+import LoaderImg from "../assets/Iphone-spinner-2.gif";
+
 const Getemp = (props) => {
   return (
     <>
@@ -18,13 +20,14 @@ const Getemp = (props) => {
             </div>
           </div>
           <div className="text-right">
+            {props.loading ? <img src={LoaderImg} width="60" /> : 
             <button
               type="button"
               className="btn btn-primary"
               onClick={props.readHandler}
             >
               Read
-            </button>
+            </button>}
           </div>
           <hr style={{ border: "#000 solid 1px" }} />
         </>
